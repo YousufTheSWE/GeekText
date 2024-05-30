@@ -1,4 +1,4 @@
-package com.example.geekText.library;
+package com.example.geekText.BookLibrary;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
