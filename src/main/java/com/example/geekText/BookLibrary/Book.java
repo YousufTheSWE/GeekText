@@ -8,7 +8,7 @@ public class Book {
     @Id
     /*@GeneratedValue(strategy = GenerationType.IDENTITY)
         Make changes to Book class to automatically generate book_id
-        whenever new book information is addede into the database
+        whenever new book information is added into the database
         through any CRUD operation. (It is nice to have, not mandatory,
         but we will see towards later sprints).
 

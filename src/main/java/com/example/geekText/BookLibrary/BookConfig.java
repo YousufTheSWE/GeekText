@@ -8,13 +8,13 @@ import java.util.List;
 
 @Configuration
 public class BookConfig {
-    @Bean
-    CommandLineRunner commandLineRunner(BookRepository repository) {
-        return args -> {
-            List<Book> books = repository.findAll();
-
-            // Print each book to the console
-            books.forEach(System.out::println);
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(BookRepository repository) {
+//        return args -> {
+//            List<Book> books = repository.findAll();
+//
+//            // Print each book to the console
+//            books.forEach(System.out::println);
+//        };
+//    }
 }
