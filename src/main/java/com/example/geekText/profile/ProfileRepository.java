@@ -8,8 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface ProfileRepository
-        extends JpaRepository<Profile, Long> {
+        extends JpaRepository<Profiles, Long> {
 
-    @Query("SELECT s FROM Profile s WHERE s.email = ?1")
-    Optional<Profile> findProfileByEmail(String email);
+    @Query("SELECT s FROM Profiles s WHERE s.email = ?1")
+    Optional<Profiles> findProfileByEmail(String email);
 }

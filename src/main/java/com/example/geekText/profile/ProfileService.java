@@ -19,12 +19,12 @@ public class ProfileService {
     }
 
 
-    public List<Profile> getProfiles(){
+    public List<Profiles> getProfiles(){
         return profileRepository.findAll();
     }
 
-    public void addNewProfile(Profile profile) {
-        Optional<Profile> profileByEmail = profileRepository.
+    public void addNewProfile(Profiles profile) {
+        Optional<Profiles> profileByEmail = profileRepository.
                 findProfileByEmail(profile.getEmail());
         if (profileByEmail.isPresent()){
             throw new IllegalStateException("email taken");
@@ -46,7 +46,7 @@ public class ProfileService {
     public void updateProfile(Long profileId,
                               String username,
                               String email) {
-        Profile profile = profileRepository.findById(profileId)
+        Profiles profile = profileRepository.findById(profileId)
                 .orElseThrow(() -> new IllegalStateException(
                         "profile with id " + profileId + " does not exist"));
         if (username != null &&
@@ -57,7 +57,7 @@ public class ProfileService {
         if (email != null &&
                 email.length() > 0 &&
                 !Objects.equals(profile.getEmail(), email)) {
-            Optional<Profile> profileOptional = profileRepository
+            Optional<Profiles> profileOptional = profileRepository
                     .findProfileByEmail(email);
             if (profileOptional.isPresent()){
                 throw new IllegalStateException("email taken");

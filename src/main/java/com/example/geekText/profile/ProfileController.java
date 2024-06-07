@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/geektext/profile") //This controls path in URL
+@RequestMapping(path = "api/v1/geektext/profiles") //This controls path in URL
 public class ProfileController {
 
     private final ProfileService profileService;
@@ -17,12 +17,12 @@ public class ProfileController {
     }
 
     @GetMapping
-    public List<Profile> getProfiles(){
+    public List<Profiles> getProfiles(){
         return profileService.getProfiles();
     }
 
     @PostMapping
-    public void registerNewProfile(@RequestBody Profile profile){
+    public void registerNewProfile(@RequestBody Profiles profile){
         profileService.addNewProfile(profile);
     }
 
