@@ -13,7 +13,6 @@ public class CommentConfig {
     @Bean
     CommandLineRunner commentCommandLineRunner(CommentRepository repository) {
         return args -> {
-
             List<Comment> comments = new ArrayList<>();
             comments.add(new Comment(1L, 1L, "The book at 1 is nice"));
             comments.add(new Comment(2L, 1L, "The book at 2 is nicish"));

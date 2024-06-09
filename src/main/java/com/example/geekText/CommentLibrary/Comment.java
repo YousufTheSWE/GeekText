@@ -25,10 +25,10 @@ public class Comment {
     @Column(name = "datestamp")
     private ZonedDateTime datestamp;
 
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "bookId")
+    @Column(name = "book_id")
     private Long bookId;
 
     public Comment(){}
