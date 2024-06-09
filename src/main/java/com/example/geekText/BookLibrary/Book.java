@@ -110,6 +110,27 @@ public class Book {
         return this.numberOfReviews;
     }
 
+    public void addRating(Double newRating) {
+        if (rating != null && numberOfReviews > 0)
+            this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
+        else {
+            this.rating = newRating;
+            this.numberOfReviews = 0L;
+        }
+        this.numberOfReviews++;
+    }
+
+    public void removeRating(Double oldRating) {
+        if (numberOfReviews < 2 || rating == null) {
+            this.rating = null;
+            this.numberOfReviews = 1L;
+        } else
+            this.rating = (numberOfReviews * rating - oldRating) / (numberOfReviews - 1);
+
+        numberOfReviews--;
+    }
+
+
     public void setRating(Double rating) {
         this.rating = rating;
     }
@@ -128,5 +149,6 @@ public class Book {
                 ", rating=" + rating +
                 '}';
     }
+
 
 }
