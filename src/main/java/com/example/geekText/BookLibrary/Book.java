@@ -96,6 +96,16 @@ public class Book {
         this.numberOfReviews++;
     }
 
+    public void removeRating(Double oldRating) {
+        if (numberOfReviews < 2 || rating == null) {
+            this.rating = null;
+            this.numberOfReviews = 1L;
+        } else
+            this.rating = (numberOfReviews * rating - oldRating) / (numberOfReviews - 1);
+
+        numberOfReviews--;
+    }
+
     public Long getNumberOfReviews(){
         return this.numberOfReviews;
     }

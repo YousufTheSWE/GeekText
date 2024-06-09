@@ -20,4 +20,9 @@ public class BookController {
     public List<Book> getBooks() {
         return bookService.getBooks();
     }
+
+    @GetMapping(path="rating/{id}")
+    public Double getAverageRating(@PathVariable("id") Long bookId) {
+        return bookService.getAverageRatingForBook(bookId);
+    }
 }
