@@ -86,17 +86,17 @@ public class Book {
         return rating;
     }
 
-    public void addRating(Double newRating) {
+    public void addRating(Integer newRating) {
         if (rating != null && numberOfReviews > 0)
             this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
         else {
-            this.rating = newRating;
+            this.rating = (double)newRating;
             this.numberOfReviews = 0L;
         }
         this.numberOfReviews++;
     }
 
-    public void removeRating(Double oldRating) {
+    public void removeRating(Integer oldRating) {
         if (numberOfReviews < 2 || rating == null) {
             this.rating = null;
             this.numberOfReviews = 1L;

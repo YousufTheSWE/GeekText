@@ -18,7 +18,7 @@ public class BookService {
     }
 
     public List<Book> getBooks() {
-        return bookRepository.findAll();
+        return bookRepository.findAllByOrderByIdAsc();
     }
 
     public Double getAverageRatingForBook(Long bookId) {
