@@ -3,10 +3,18 @@ package com.example.geekText.BookLibrary;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "library")
+@Table(name = "Book")
 public class Book {
     @Id
-    @Column(name = "book_id") // Use the exact column name as in the database
+    @SequenceGenerator(
+            name = "book_sequence",
+            sequenceName = "book_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "book_sequence"
+    )
     private Long id;
 
     @Column(name = "author_name") // Use the exact column name as in the database
@@ -21,32 +29,33 @@ public class Book {
     @Column(name = "rating") // Use the exact column name as in the database
     private Double rating;
 
+    @Column(name = "number_of_reviews")
+    private Long numberOfReviews;
+
     // Constructors, getters, setters, and toString()
     public Book() {}
 
-    public Book(String authorName, String bookName, String genre, Double rating) {
+    public Book(String authorName, String bookName, String genre) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
-        this.rating = rating;
+        this.rating = null;
+        this.numberOfReviews = 0L;
     }
 
-    public Book(Long id, String authorName, String bookName, String genre, Double rating) {
-        this.id = id;
+    public Book(String authorName, String bookName, String genre,
+                Double rating, Long numberOfReviews) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
         this.rating = rating;
+        this.numberOfReviews = numberOfReviews;
     }
 
     // Getters and Setters
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAuthorName() {
@@ -77,8 +86,26 @@ public class Book {
         return rating;
     }
 
+    public void addRating(Double newRating) {
+        if (rating == null || numberOfReviews == 0)
+            this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
+        else {
+            this.rating = newRating;
+            this.numberOfReviews = 0L;
+        }
+        this.numberOfReviews++;
+    }
+
+    public Long getNumberOfReviews(){
+        return this.numberOfReviews;
+    }
+
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public void setNumberOfReviews(Long numberOfReviews) {
+        this.numberOfReviews = numberOfReviews;
     }
 
     @Override
@@ -91,4 +118,5 @@ public class Book {
                 ", rating=" + rating +
                 '}';
     }
+    
 }
