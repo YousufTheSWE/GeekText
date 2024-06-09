@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -11,10 +13,45 @@ public class BookConfig {
     @Bean
     CommandLineRunner commandLineRunner(BookRepository repository) {
         return args -> {
-            List<Book> books = repository.findAll();
+            // Either BookName, AuthorName, Genre or
+            // BookName, AuthorName, Genre, rating, number of reviews
+            List<Book> books = new ArrayList<>();
+            books.add(new Book(
+                    "Guide: How to find diamonds in Minecraft",
+                    "Mojang",
+                    "Gaming"
+            ));
+            books.add(new Book(
+                    "Crime and Punishment",
+                    "Fyodor Dostoevsky",
+                    "Crime",
+                    4.27,
+                    915943L
+            ));
+            books.add(new Book(
+                    "James",
+                    "Percival Everett",
+                    "Historical",
+                    4.57,
+                    8L
+            ));
+            books.add(new Book(
+                    "Wandering Stars",
+                    "Tommy Orange",
+                    "Historical Fiction"
+            ));
+            books.add(new Book(
+                    "The Book of Doors",
+                    "Gareth Brown",
+                    "Fantasy"
+            ));
+            books.add(new Book(
+                    "When the Moon Hatched",
+                    "Sarah A. Parker",
+                    "Romance"
+            ));
 
-            // Print each book to the console
-            books.forEach(System.out::println);
+            repository.saveAll(books);
         };
     }
 }
