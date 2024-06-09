@@ -35,7 +35,7 @@ public class Book {
     // Constructors, getters, setters, and toString()
     public Book() {}
 
-    public Book(String authorName, String bookName, String genre) {
+    public Book(String bookName, String authorName, String genre) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
@@ -43,7 +43,7 @@ public class Book {
         this.numberOfReviews = 0L;
     }
 
-    public Book(String authorName, String bookName, String genre,
+    public Book(String bookName, String authorName, String genre,
                 Double rating, Long numberOfReviews) {
         this.authorName = authorName;
         this.bookName = bookName;
@@ -87,7 +87,7 @@ public class Book {
     }
 
     public void addRating(Double newRating) {
-        if (rating == null || numberOfReviews == 0)
+        if (rating != null && numberOfReviews > 0)
             this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
         else {
             this.rating = newRating;

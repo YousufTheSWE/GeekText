@@ -5,13 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 public class BookConfig {
     @Bean
-    CommandLineRunner commandLineRunner(BookRepository repository) {
+    CommandLineRunner bookCommandLineRunner(BookRepository repository) {
         return args -> {
             // Either BookName, AuthorName, Genre or
             // BookName, AuthorName, Genre, rating, number of reviews
