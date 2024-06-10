@@ -1,14 +1,12 @@
 package com.example.geekText.library;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "geekText")
 public class BookController {
     private final BookService bookService;
 
@@ -17,8 +15,29 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
+    @GetMapping(path = "books")
     public List<Book> getBooks() {
         return bookService.getBooks();
+    }
+
+    @PostMapping(path = "add")
+    public void registerNewBooks(@RequestBody Book book) {
+        bookService.addNewBook(book);
+    }
+
+    @DeleteMapping(path = "delete/{id}")
+    public void deleteBook(@PathVariable("id") Long id) {
+        bookService.deleteBook(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updateBook(
+            @PathVariable("id") Long id,
+            @RequestParam(required = false) String authorName,
+            @RequestParam(required = false) String bookName,
+            @RequestParam(required = false) String genre,
+            @RequestParam(required = false) Double rating,
+            @RequestParam(required = false) Integer copiesSold) {
+        bookService.updateBook(id, authorName, bookName, genre, rating, copiesSold);
     }
 }
