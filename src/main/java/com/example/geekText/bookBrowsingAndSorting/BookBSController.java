@@ -24,4 +24,9 @@ public class BookBSController {
     public List<Book> getBooksByGenre(@RequestParam String genre) {
         return bookBSService.getBooksByGenre(genre);
     }
+
+    @GetMapping(path = "books/top-sellers")
+    public List<Book> getTopSellers() {
+        return bookBSService.getTopSellers();
+    }
 }
