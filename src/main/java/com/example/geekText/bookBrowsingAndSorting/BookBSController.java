@@ -1,7 +1,6 @@
 package com.example.geekText.bookBrowsingAndSorting;
 
-import com.example.geekText.library.Book;
-import com.example.geekText.library.BookService;
+import com.example.geekText.browsingLibrary.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

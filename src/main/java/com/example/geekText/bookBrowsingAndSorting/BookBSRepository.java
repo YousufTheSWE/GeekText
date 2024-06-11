@@ -1,6 +1,6 @@
 package com.example.geekText.bookBrowsingAndSorting;
 
-import com.example.geekText.library.Book;
+import com.example.geekText.browsingLibrary.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

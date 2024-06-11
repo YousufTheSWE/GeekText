@@ -1,4 +1,4 @@
-package com.example.geekText.library;
+package com.example.geekText.browsingLibrary;
 
 import jakarta.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.example.geekText.library;
+package com.example.geekText.browsingLibrary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

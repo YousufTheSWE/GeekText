@@ -1,8 +1,7 @@
-package com.example.geekText.library;
+package com.example.geekText.browsingLibrary;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,10 +10,10 @@ import java.util.Optional;
 
 @Service
 public class BookService {
-    private final com.example.geekText.library.BookRepository bookRepository;
+    private final com.example.geekText.browsingLibrary.BookRepository bookRepository;
 
     @Autowired
-    public BookService(com.example.geekText.library.BookRepository bookRepository) {
+    public BookService(com.example.geekText.browsingLibrary.BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
