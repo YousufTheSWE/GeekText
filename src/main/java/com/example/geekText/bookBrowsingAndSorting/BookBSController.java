@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping(path = "geekText")
+@RequestMapping(path = "geekText/browsing")
 public class BookBSController {
     private final BookBSService bookBSService;
 
