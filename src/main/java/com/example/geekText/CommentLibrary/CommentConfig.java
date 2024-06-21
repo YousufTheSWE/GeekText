@@ -13,14 +13,14 @@ public class CommentConfig {
     @Bean
     CommandLineRunner commentCommandLineRunner(CommentRepository repository) {
         return args -> {
-            List<Comment> comments = new ArrayList<>();
-            comments.add(new Comment(1L, 1L, "The book at 1 is nice"));
-            comments.add(new Comment(2L, 1L, "The book at 2 is nicish"));
-            comments.add(new Comment(2L, 2L, "The book at 2 is meh"));
-            comments.add(new Comment(1L, 2L, "The book at 1 is terrible"));
-            comments.add(new Comment(1L, 3L, "The book at 1 is amazing"));
-
-            repository.saveAll(comments);
+//            List<Comment> comments = new ArrayList<>();
+//            comments.add(new Comment(1L, 1L, "The book at 1 is nice"));
+//            comments.add(new Comment(2L, 1L, "The book at 2 is nicish"));
+//            comments.add(new Comment(2L, 2L, "The book at 2 is meh"));
+//            comments.add(new Comment(1L, 2L, "The book at 1 is terrible"));
+//            comments.add(new Comment(1L, 3L, "The book at 1 is amazing"));
+//
+//            repository.saveAll(comments);
         };
     }
 }
