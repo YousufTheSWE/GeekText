@@ -21,9 +21,8 @@ public class CommentService {
 
     public void addNewComment(Comment comment) {
         comment.setDatestamp(ZonedDateTime.now());
-        if (comment.getBookId() == null || comment.getUserId() == null)
+        if (comment.getBookId() == null || comment.getUserId() == null || comment.getComment() == null)
             throw new IllegalArgumentException("Needs a bookId and a userId");
-        if (comment.getComment() == null) comment.setComment("");
         commentRepository.save(comment);
     }
 }
