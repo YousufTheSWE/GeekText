@@ -1,4 +1,4 @@
-package com.example.geekText.browsingLibrary;
+package com.example.geekText.BookLibraryBrowsingAndSorting;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -7,21 +7,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "geekText/browsing")
-public class BookController {
-    private final BookService bookService;
+public class BookControllerBS {
+    private final BookServiceBS bookService;
 
     @Autowired
-    public BookController(BookService bookService) {
+    public BookControllerBS(BookServiceBS bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping(path = "books")
-    public List<Book> getBooks() {
+    public List<BookBS> getBooks() {
         return bookService.getBooks();
     }
 
     @PostMapping(path = "add")
-    public void registerNewBooks(@RequestBody Book book) {
+    public void registerNewBooks(@RequestBody BookBS book) {
         bookService.addNewBook(book);
     }
 

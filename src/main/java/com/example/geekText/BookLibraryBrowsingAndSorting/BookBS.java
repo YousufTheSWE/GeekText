@@ -1,10 +1,10 @@
-package com.example.geekText.browsingLibrary;
+package com.example.geekText.BookLibraryBrowsingAndSorting;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "library")
-public class Book {
+public class BookBS {
     @Id
     @Column(name = "book_id") // Use the exact column name as in the database
     private Long id;
@@ -25,9 +25,9 @@ public class Book {
     private Integer copiesSold;
 
     // Constructors, getters, setters, and toString()
-    public Book() {}
+    public BookBS() {}
 
-    public Book(String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
+    public BookBS(String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
@@ -35,7 +35,7 @@ public class Book {
         this.copiesSold = copiesSold;
     }
 
-    public Book(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
+    public BookBS(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
         this.id = id;
         this.authorName = authorName;
         this.bookName = bookName;

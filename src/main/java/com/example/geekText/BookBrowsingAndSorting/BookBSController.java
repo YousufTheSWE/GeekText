@@ -1,6 +1,6 @@
-package com.example.geekText.bookBrowsingAndSorting;
+package com.example.geekText.BookBrowsingAndSorting;
 
-import com.example.geekText.browsingLibrary.Book;
+import com.example.geekText.BookLibraryBrowsingAndSorting.BookBS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,12 +20,12 @@ public class BookBSController {
         ////////////////////////////////////////////////
 
     @GetMapping(path = "books/genre")
-    public List<Book> getBooksByGenre(@RequestParam String genre) {
+    public List<BookBS> getBooksByGenre(@RequestParam String genre) {
         return bookBSService.getBooksByGenre(genre);
     }
 
     @GetMapping(path = "books/top-sellers")
-    public List<Book> getTopSellers() {
+    public List<BookBS> getTopSellers() {
         return bookBSService.getTopSellers();
     }
 }

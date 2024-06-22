@@ -1,4 +1,4 @@
-package com.example.geekText.browsingLibrary;
+package com.example.geekText.BookLibraryBrowsingAndSorting;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class BookConfig {
+public class BookConfigBS {
     @Bean
-    CommandLineRunner commandLineRunner(BookRepository repository) {
+    CommandLineRunner commandLineRunner(BookRepositoryBS repository) {
         return args -> {
-            List<Book> books = repository.findAll();
+            List<BookBS> books = repository.findAll();
 
             // Print each book to the console
             books.forEach(System.out::println);
