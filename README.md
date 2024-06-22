@@ -6,7 +6,7 @@
 * Retrieve List of Top Sellers (Top 10 books that have sold the most copied)
   * Postman: GET localhost:8080/geekText/browsing/books/top-sellers
 -------------------------------
-# Profile Management:
+# Profile Management
 * Retrieve Profiles
   * Postman: GET localhost:8080/geektext/profiles
 * Add Profile
