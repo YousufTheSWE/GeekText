@@ -1,6 +1,6 @@
 package com.example.geekText.BookBrowsingAndSorting;
 
-import com.example.geekText.BookLibraryBrowsingAndSorting.BookBS;
+import com.example.geekText.BookLibraryBrowsingAndSorting.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +19,11 @@ public class BookBSService {
     // SPECIFIC FEATURES FOR BOOK BROWSING AND SORTING!
     ////////////////////////////////////////////////
 
-    public List<BookBS> getBooksByGenre(String genre) {
+    public List<Book> getBooksByGenre(String genre) {
         return bookBSRepository.findByGenre(genre);
     }
 
-    public List<BookBS> getTopSellers() {
+    public List<Book> getTopSellers() {
         return bookBSRepository.findTop10ByCopiesSold();
     }
 }

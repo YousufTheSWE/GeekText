@@ -9,19 +9,19 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class BookServiceBS {
-    private final BookRepositoryBS bookRepository;
+public class BookService {
+    private final BookRepository bookRepository;
 
     @Autowired
-    public BookServiceBS(BookRepositoryBS bookRepository) {
+    public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public List<BookBS> getBooks() {
+    public List<Book> getBooks() {
         return bookRepository.findAll();
     }
 
-    public void addNewBook(BookBS book) {
+    public void addNewBook(Book book) {
         bookRepository.save(book);
     }
 
@@ -37,14 +37,14 @@ public class BookServiceBS {
 
     @Transactional
     public void updateBook(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
-        BookBS book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book with Id: " + id + " does not exist."));
+        Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book with Id: " + id + " does not exist."));
 
         if (authorName != null && !authorName.isEmpty() && !Objects.equals(book.getAuthorName(), authorName)) {
             book.setAuthorName(authorName);
         }
 
         if (bookName != null && !bookName.isEmpty() && !Objects.equals(book.getBookName(), bookName)) {
-            Optional<BookBS> bookOptional = bookRepository.findBookByBookName(bookName);
+            Optional<Book> bookOptional = bookRepository.findBookByBookName(bookName);
             if (bookOptional.isPresent()) {
                 throw new IllegalStateException("This book name already exists.");
             }

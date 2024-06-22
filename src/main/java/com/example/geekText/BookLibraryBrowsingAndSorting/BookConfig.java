@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class BookConfigBS {
+public class BookConfig {
     @Bean
-    CommandLineRunner commandLineRunner(BookRepositoryBS repository) {
+    CommandLineRunner commandLineRunner(BookRepository repository) {
         return args -> {
-            List<BookBS> books = repository.findAll();
+            List<Book> books = repository.findAll();
 
             // Print each book to the console
             books.forEach(System.out::println);

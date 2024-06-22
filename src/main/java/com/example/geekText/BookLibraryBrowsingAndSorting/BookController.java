@@ -7,21 +7,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "geekText/browsing")
-public class BookControllerBS {
-    private final BookServiceBS bookService;
+public class BookController {
+    private final BookService bookService;
 
     @Autowired
-    public BookControllerBS(BookServiceBS bookService) {
+    public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
     @GetMapping(path = "books")
-    public List<BookBS> getBooks() {
+    public List<Book> getBooks() {
         return bookService.getBooks();
     }
 
     @PostMapping(path = "add")
-    public void registerNewBooks(@RequestBody BookBS book) {
+    public void registerNewBooks(@RequestBody Book book) {
         bookService.addNewBook(book);
     }
 
