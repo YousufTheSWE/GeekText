@@ -23,6 +23,8 @@ public class CommentService {
     }
 
     public List<Comment> getComments(Long bookId) {
+        if (!bookRepository.findById(bookId).isPresent())
+            throw new IllegalStateException("book with id " + bookId + " does not exist");
         return commentRepository.findAllByBookId(bookId);
     }
 
