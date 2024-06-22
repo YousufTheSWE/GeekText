@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/geektext/profiles") //This controls path in URL
+@RequestMapping(path = "geekText/profiles") //This controls path in URL
 public class ProfileController {
 
     private final ProfileService profileService;
