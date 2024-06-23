@@ -1,40 +1,45 @@
 package com.example.geekText.WishList;
 
+import com.example.geekText.BookLibrary.Book;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
 public class Wishlist {
 
+
     @Id
-    @SequenceGenerator(
-            name = "wishlist_sequence",
-            sequenceName = "wishlist_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "wishlist_sequence"
-    )
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "user_id")
     private long userID;
-    private String[] books;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "wishlist_id")
+    private List<Book> books;
+
+
+
+
 
 
     public Wishlist() {
     }
 
-    public Wishlist(Long id, String name, long userID, String[] books) {
+    public Wishlist(Long id, String name, long userID, List<Book> books) {
         this.id = id;
         this.name = name;
         this.userID = userID;
         this.books = books;
     }
 
-    public Wishlist(String name, long userID, String[] books) {
+    public Wishlist(String name, long userID, List<Book> books) {
         this.name = name;
         this.userID = userID;
         this.books = books;
@@ -64,12 +69,12 @@ public class Wishlist {
         this.userID = userID;
     }
 
-    public String[] getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(String[] books) {
-        this.books = new String[]{};
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
