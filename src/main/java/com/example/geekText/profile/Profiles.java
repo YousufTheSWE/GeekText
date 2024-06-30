@@ -18,23 +18,28 @@ public class Profiles {
     )
     private Long id;
     private String username;
+
+    private String password;
     private String email;
     public Profiles() {
     }
     public Profiles(Long id,
                    String username,
-                   String email
+                   String email,
+                   String password
                    ) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public Profiles(String username,
-                   String email
+                   String email, String password
                    ) {
         this.username = username;
         this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -60,11 +65,18 @@ public class Profiles {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
     @Override
     public String toString() {
         return "Profile{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

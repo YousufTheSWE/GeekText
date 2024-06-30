@@ -18,52 +18,48 @@ public class ProfileService {
         this.profileRepository = profileRepository;
     }
 
-
     public List<Profiles> getProfiles(){
         return profileRepository.findAll();
     }
 
+    public Optional<Profiles> getProfileByUsername(String username) {
+        return profileRepository.findProfileByUsername(username);
+    }
+
     public void addNewProfile(Profiles profile) {
-        Optional<Profiles> profileByEmail = profileRepository.
-                findProfileByEmail(profile.getEmail());
-        if (profileByEmail.isPresent()){
-            throw new IllegalStateException("email taken");
+        Optional<Profiles> profileByUsername = profileRepository.findProfileByUsername(profile.getUsername());
+        if (profileByUsername.isPresent()){
+            throw new IllegalStateException("username taken");
         }
         profileRepository.save(profile);
         System.out.println(profile);
     }
 
-    public void deleteProfile(Long profileId) {
-        boolean exists = profileRepository.existsById(profileId);
-        if (!exists) {
+    public void deleteProfile(String profileUsername) {
+        Optional<Profiles> profile = profileRepository.findProfileByUsername(profileUsername);
+        if (!profile.isPresent()) {
             throw new IllegalStateException(
-                    "profile with id " + profileId + " does not exists");
+                    "profile with username " + profileUsername + " does not exist");
         }
-        profileRepository.deleteById(profileId);
+        profileRepository.delete(profile.get());
     }
 
     @Transactional
-    public void updateProfile(Long profileId,
-                              String username,
-                              String email) {
-        Profiles profile = profileRepository.findById(profileId)
+    public void updateProfile(String profileUsername,
+                              String newUsername,
+                              String newPassword) {
+        Profiles profile = profileRepository.findProfileByUsername(profileUsername)
                 .orElseThrow(() -> new IllegalStateException(
-                        "profile with id " + profileId + " does not exist"));
-        if (username != null &&
-                username.length() > 0 &&
-                !Objects.equals(profile.getUsername(), username)) {
-            profile.setUsername(username);
+                        "profile with username " + profileUsername + " does not exist"));
+        if (newUsername != null &&
+                newUsername.length() > 0 &&
+                !Objects.equals(profile.getUsername(), newUsername)) {
+            profile.setUsername(newUsername);
         }
-        if (email != null &&
-                email.length() > 0 &&
-                !Objects.equals(profile.getEmail(), email)) {
-            Optional<Profiles> profileOptional = profileRepository
-                    .findProfileByEmail(email);
-            if (profileOptional.isPresent()){
-                throw new IllegalStateException("email taken");
-            }
-            profile.setEmail(email);
+        if (newPassword != null &&
+                newPassword.length() > 0 &&
+                !Objects.equals(profile.getPassword(), newPassword)) {
+            profile.setPassword(newPassword);
         }
-
     }
 }

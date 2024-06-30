@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "geekText/profiles") //This controls path in URL
+@RequestMapping(path = "geektext/profiles") // This controls the path in the URL
 public class ProfileController {
 
     private final ProfileService profileService;
@@ -17,26 +17,31 @@ public class ProfileController {
     }
 
     @GetMapping
-    public List<Profiles> getProfiles(){
+    public List<Profiles> getProfiles() {
         return profileService.getProfiles();
     }
 
+    @GetMapping("/{username}")
+    public Profiles getProfileByUsername(@PathVariable("username") String username) {
+        return profileService.getProfileByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("Profile with username " + username + " does not exist"));
+    }
+
     @PostMapping
-    public void registerNewProfile(@RequestBody Profiles profile){
+    public void registerNewProfile(@RequestBody Profiles profile) {
         profileService.addNewProfile(profile);
     }
 
-    @DeleteMapping(path = "{profileId}")
-    public void deleteProfile(
-            @PathVariable("profileId") Long profileId){
-        profileService.deleteProfile(profileId);
+    @DeleteMapping(path = "{profileUsername}")
+    public void deleteProfile(@PathVariable("profileUsername") String profileUsername) {
+        profileService.deleteProfile(profileUsername);
     }
 
-    @PutMapping(path = "{profileId}")
+    @PutMapping(path = "{profileUsername}")
     public void updateProfile(
-            @PathVariable("profileId") Long profileId,
+            @PathVariable("profileUsername") String profileUsername,
             @RequestParam(required = false) String username,
-            @RequestParam(required = false) String email){
-        profileService.updateProfile(profileId, username, email);
+            @RequestParam(required = false) String password) {
+        profileService.updateProfile(profileUsername, username, password);
     }
 }
