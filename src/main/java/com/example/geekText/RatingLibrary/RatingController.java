@@ -17,7 +17,7 @@ public class RatingController {
     }
 
     @PostMapping
-    public void registerNewBook(@RequestBody Rating rating) {
+    public void registerNewRating(@RequestBody Rating rating) {
         ratingService.addNewRating(rating);
     }
 }

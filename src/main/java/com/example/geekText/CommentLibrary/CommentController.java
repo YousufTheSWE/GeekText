@@ -22,7 +22,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public void registerNewBook(@RequestBody Comment comment) {
+    public void registerNewComment(@RequestBody Comment comment) {
         commentService.addNewComment(comment);
     }
 }

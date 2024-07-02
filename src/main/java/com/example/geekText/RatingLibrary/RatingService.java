@@ -11,14 +11,12 @@ import java.util.List;
 
 @Service
 public class RatingService {
-    public static class DoubleRatingException extends IllegalArgumentException {
+    class DoubleRatingException extends IllegalArgumentException {
         public DoubleRatingException(Long userId, Long bookId){
             super("User " + userId + " can not make another comment on book " + bookId);
         }
     }
     private final RatingRepository ratingRepository;
-    @Autowired
-    private ApplicationContext appContext;
 
     @Autowired
     private BookRepository bookRepository;
