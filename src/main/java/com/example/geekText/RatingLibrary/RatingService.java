@@ -7,9 +7,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Service
 public class RatingService {
+    public static class DoubleRatingException extends IllegalArgumentException {
+        public DoubleRatingException(Long userId, Long bookId){
+            super("User " + userId + " can not make another comment on book " + bookId);
+        }
+    }
     private final RatingRepository ratingRepository;
     @Autowired
     private ApplicationContext appContext;
@@ -31,6 +37,11 @@ public class RatingService {
 
         Book aBook = bookRepository.findById(rating.getBookId()).orElseThrow(()
                 -> new IllegalStateException("book with id " + rating.getBookId() + " does not exist"));
+
+        List<Rating> ratings = ratingRepository.findAllByBookIdAndUserId(rating.getBookId(), rating.getUserId());
+        if (!ratings.isEmpty())
+            throw new DoubleRatingException(rating.getUserId(), rating.getBookId());
+
         aBook.addRating(rating.getRating());
 
         ratingRepository.save(rating);

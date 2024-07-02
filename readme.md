@@ -40,3 +40,4 @@
     * Throws IllegalArgumentException if any of the 3 above are missing
     * Throws IllegalArgumentException if the rating is not and integer in range [1,5]
     * Throws IllegalStateException if book with bookId does not exist
+    * Throws DoubleRatingException if the user already rated this book.
