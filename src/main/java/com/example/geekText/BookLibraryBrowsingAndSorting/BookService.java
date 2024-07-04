@@ -36,7 +36,7 @@ public class BookService {
     }
 
     @Transactional
-    public void updateBook(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
+    public void updateBook(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold, Double price) {
         Book book = bookRepository.findById(id).orElseThrow(() -> new IllegalStateException("Book with Id: " + id + " does not exist."));
 
         if (authorName != null && !authorName.isEmpty() && !Objects.equals(book.getAuthorName(), authorName)) {
@@ -62,8 +62,9 @@ public class BookService {
         if (copiesSold != null && copiesSold >= 0 && !Objects.equals(book.getCopiesSold(), copiesSold)) {
             book.setCopiesSold(copiesSold);
         }
+
+        if (price != null && price >= 0 && !Objects.equals(book.getPrice(), price)) {
+            book.setPrice(price);
+        }
     }
 }
-
-
-

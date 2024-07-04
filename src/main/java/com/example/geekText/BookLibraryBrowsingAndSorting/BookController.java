@@ -30,14 +30,15 @@ public class BookController {
         bookService.deleteBook(id);
     }
 
-    @PutMapping(path = "{id}")
+    @PutMapping(path = "update/{id}")
     public void updateBook(
             @PathVariable("id") Long id,
             @RequestParam(required = false) String authorName,
             @RequestParam(required = false) String bookName,
             @RequestParam(required = false) String genre,
             @RequestParam(required = false) Double rating,
-            @RequestParam(required = false) Integer copiesSold) {
-        bookService.updateBook(id, authorName, bookName, genre, rating, copiesSold);
+            @RequestParam(required = false) Integer copiesSold,
+            @RequestParam(required = false) Double price) {
+        bookService.updateBook(id, authorName, bookName, genre, rating, copiesSold, price);
     }
 }

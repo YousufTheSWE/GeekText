@@ -19,4 +19,10 @@ public interface BookBSRepository extends JpaRepository<Book, Long> {
     @Query("SELECT b FROM Book b ORDER BY b.copiesSold DESC")
     List<Book> findTop10ByCopiesSold();
 
+    @Query("SELECT b FROM Book b WHERE b.rating >= ?1")
+    List<Book> findByRatingGreaterThanEqual(Double rating);
+
+    @Query("SELECT b FROM Book b WHERE b.authorName = ?1 ORDER BY b.id ASC")
+    List<Book> findByAuthorNameOrderedById(String authorName);
+
 }

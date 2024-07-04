@@ -28,4 +28,14 @@ public class BookBSController {
     public List<Book> getTopSellers() {
         return bookBSService.getTopSellers();
     }
+
+    @GetMapping(path = "books/rating")
+    public List<Book> getBooksByRating(@RequestParam("rating") Double rating) {
+        return bookBSService.getBooksByRating(rating);
+    }
+
+    @PutMapping(path = "books/discount")
+    public void discountBooksByAuthor(@RequestParam("authorName") String authorName, @RequestParam("discountPercent") Double discountPercent) {
+        bookBSService.discountBooksByAuthor(authorName, discountPercent);
+    }
 }

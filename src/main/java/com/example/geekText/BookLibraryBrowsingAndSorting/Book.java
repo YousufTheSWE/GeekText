@@ -24,24 +24,29 @@ public class Book {
     @Column(name = "copies_sold")
     private Integer copiesSold;
 
+    @Column(name = "price") // Use the exact column name as in the database
+    private Double price;
+
     // Constructors, getters, setters, and toString()
     public Book() {}
 
-    public Book(String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
+    public Book(String authorName, String bookName, String genre, Double rating, Integer copiesSold, Double price) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
         this.rating = rating;
         this.copiesSold = copiesSold;
+        this.price = price;
     }
 
-    public Book(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold) {
+    public Book(Long id, String authorName, String bookName, String genre, Double rating, Integer copiesSold, Double price) {
         this.id = id;
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
         this.rating = rating;
         this.copiesSold = copiesSold;
+        this.price = price;
     }
 
     // Getters and Setters
@@ -94,6 +99,14 @@ public class Book {
         this.copiesSold = copiesSold;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -103,6 +116,7 @@ public class Book {
                 ", genre='" + genre + '\'' +
                 ", rating=" + rating +
                 ", copiesSold=" + copiesSold +
+                ", price=" + price +
                 '}';
     }
 }

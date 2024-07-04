@@ -1,6 +1,7 @@
 package com.example.geekText.BookBrowsingAndSorting;
 
 import com.example.geekText.BookLibraryBrowsingAndSorting.Book;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,18 @@ public class BookBSService {
 
     public List<Book> getTopSellers() {
         return bookBSRepository.findTop10ByCopiesSold();
+    }
+
+    public List<Book> getBooksByRating(Double rating) {
+        return bookBSRepository.findByRatingGreaterThanEqual(rating);
+    }
+
+    @Transactional
+    public void discountBooksByAuthor(String authorName, Double discountPercent) {
+        List<Book> books = bookBSRepository.findByAuthorNameOrderedById(authorName);
+        for (Book book : books) {
+            double discountedPrice = book.getPrice() * (1 - discountPercent / 100);
+            book.setPrice(discountedPrice);
+        }
     }
 }
