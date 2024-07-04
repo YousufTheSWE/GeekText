@@ -24,7 +24,7 @@
     * Returns empty JSON if no comments exist
     * Throws IllegalStateException if book with bookId does not exist
   * POST */api/v1/comment
-    * Requires a paramater body of raw data type JSON.
+    * Requires a parameter body of raw data type JSON.
     * The JSON must contain "userId" "bookId" and "comment" params
     * Throws IllegalArgumentException if any of the 3 above are missing
     * Throws IllegalStateException if book with bookId does not exist
@@ -35,7 +35,7 @@
     * Returns 0 if average rating does not exist
     * Returns IllegalStateException if bookId does not exist
   * POST *api/v1/rating
-    * Requires a paramater body of raw data type JSON.
+    * Requires a parameter body of raw data type JSON.
     * The JSON must contain "userId" "bookId" and "rating" params
     * Throws IllegalArgumentException if any of the 3 above are missing
     * Throws IllegalArgumentException if the rating is not and integer in range [1,5]
