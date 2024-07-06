@@ -1,7 +1,7 @@
 package com.example.geekText.Cart;
 
 import com.example.geekText.BookLibrary.Book;
-import com.example.geekText.User.User;
+import com.example.geekText.profile.Profile;
 import jakarta.persistence.*;
 
 @Entity

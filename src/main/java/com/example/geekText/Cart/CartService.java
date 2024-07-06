@@ -2,8 +2,8 @@ package com.example.geekText.Cart;
 
 import com.example.geekText.BookLibrary.Book;
 import com.example.geekText.BookLibrary.BookRepository;
-import com.example.geekText.User.User;
-import com.example.geekText.User.UserRepository;
+import com.example.geekText.profile.Profile;
+import com.example.geekText.profile.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class CartService {
     @Autowired
     BookRepository bookRepository;
     @Autowired
-    UserRepository userRepository;
+    ProfileRepository profileRepository;
 
     // get subtotal price in users cart
     public double CalcSubtotal(long userId) {

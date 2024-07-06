@@ -12,13 +12,13 @@ import java.util.List;
 @Configuration
 public class CartConfig {
 
-    @Bean
-    CommandLineRunner cartCommandLineRunner(CartRepository repository){
-        return args -> {
-
-            List<Cart> cartItems = new ArrayList<>();
-            repository.saveAll(cartItems);
-        };
-    }
+//    @Bean
+//    CommandLineRunner cartCommandLineRunner(CartRepository repository){
+//        return args -> {
+//
+//            List<Cart> cartItems = new ArrayList<>();
+//            repository.saveAll(cartItems);
+//        };
+//    }
 
 }
