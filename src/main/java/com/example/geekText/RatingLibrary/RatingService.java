@@ -13,7 +13,7 @@ import java.util.List;
 public class RatingService {
     class DoubleRatingException extends IllegalArgumentException {
         public DoubleRatingException(Long userId, Long bookId){
-            super("User " + userId + " can not make another comment on book " + bookId);
+            super("User " + userId + " can not make another rating on book " + bookId);
         }
     }
     private final RatingRepository ratingRepository;
