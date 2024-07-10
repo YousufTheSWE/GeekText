@@ -1,4 +1,4 @@
-package com.example.geekText.BookLibrary;
+package bookstore.example.demo.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/v1/book")
+@RequestMapping(path = "api/v1/book")
 public class BookController {
 
     private final BookService bookService;
@@ -16,13 +16,18 @@ public class BookController {
         this.bookService = bookService;
     }
 
+
     @GetMapping
-    public List<Book> getBooks() {
+    public List<Book> getBooks(){
         return bookService.getBooks();
+
     }
 
-    @GetMapping(path="rating/{id}")
-    public Double getAverageRating(@PathVariable("id") Long bookId) {
-        return bookService.getAverageRatingForBook(bookId);
+    @PostMapping
+    public void registerNewBook(@RequestBody Book book){
+        bookService.addNewBook(book);
     }
+
+
+
 }

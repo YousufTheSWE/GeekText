@@ -1,6 +1,6 @@
 package com.example.geekText.Cart;
 
-import com.example.geekText.profile.Profile;
+import com.example.geekText.profile.Profiles;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
 package com.example.geekText.Cart;
 
 import com.example.geekText.BookLibrary.Book;
-import com.example.geekText.profile.Profile;
+import com.example.geekText.profile.Profiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

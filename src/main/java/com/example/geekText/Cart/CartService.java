@@ -2,7 +2,7 @@ package com.example.geekText.Cart;
 
 import com.example.geekText.BookLibrary.Book;
 import com.example.geekText.BookLibrary.BookRepository;
-import com.example.geekText.profile.Profile;
+import com.example.geekText.profile.Profiles;
 import com.example.geekText.profile.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

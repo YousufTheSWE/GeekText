@@ -3,17 +3,18 @@ package com.example.geekText.BookLibrary;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "library")
+@Table(name = "Book")
 public class Book {
     @Id
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY)
-        Make changes to Book class to automatically generate book_id
-        whenever new book information is added into the database
-        through any CRUD operation. (It is nice to have, not mandatory,
-        but we will see towards later sprints).
-
-     */
-    @Column(name = "book_id") // Use the exact column name as in the database
+    @SequenceGenerator(
+            name = "book_sequence",
+            sequenceName = "book_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "book_sequence"
+    )
     private Long id;
 
     @Column(name = "author_name") // Use the exact column name as in the database
@@ -31,24 +32,29 @@ public class Book {
     @Column(name = "rating") // Use the exact column name as in the database
     private Double rating;
 
+    @Column(name = "number_of_reviews")
+    private Long numberOfReviews;
+
     // Constructors, getters, setters, and toString()
     public Book() {}
 
-    public Book(String authorName, String bookName, String genre, Double price, Double rating) {
+    public Book(String bookName, String authorName, String genre, Double price) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
         this.price = price;
-        this.rating = rating;
+        this.rating = null;
+        this.numberOfReviews = 0L;
     }
 
-    public Book(Long id, String authorName, String bookName, String genre, Double price, Double rating) {
-        this.id = id;
+    public Book(String bookName, String authorName, String genre,
+                Double price, Double rating, Long numberOfReviews) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
         this.price = price;
         this.rating = rating;
+        this.numberOfReviews = numberOfReviews;
     }
 
     // Getters and Setters
@@ -89,6 +95,50 @@ public class Book {
         return rating;
     }
 
+    public void addRating(Integer newRating) {
+        if (rating != null && numberOfReviews > 0)
+            this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
+        else {
+            this.rating = (double)newRating;
+            this.numberOfReviews = 0L;
+        }
+        this.numberOfReviews++;
+    }
+
+    public void removeRating(Integer oldRating) {
+        if (numberOfReviews < 2 || rating == null) {
+            this.rating = null;
+            this.numberOfReviews = 1L;
+        } else
+            this.rating = (numberOfReviews * rating - oldRating) / (numberOfReviews - 1);
+
+        numberOfReviews--;
+    }
+
+    public Long getNumberOfReviews(){
+        return this.numberOfReviews;
+    }
+
+    public void addRating(Double newRating) {
+        if (rating != null && numberOfReviews > 0)
+            this.rating = (rating * numberOfReviews + newRating) / (numberOfReviews + 1);
+        else {
+            this.rating = newRating;
+            this.numberOfReviews = 0L;
+        }
+        this.numberOfReviews++;
+    }
+
+    public void removeRating(Double oldRating) {
+        if (numberOfReviews < 2 || rating == null) {
+            this.rating = null;
+            this.numberOfReviews = 1L;
+        } else
+            this.rating = (numberOfReviews * rating - oldRating) / (numberOfReviews - 1);
+
+        numberOfReviews--;
+    }
+
     public void setRating(Double rating) {
         this.rating = rating;
     }
@@ -97,15 +147,21 @@ public class Book {
 
     public void setPrice(){ this.price = price; }
 
+    public void setNumberOfReviews(Long numberOfReviews) {
+        this.numberOfReviews = numberOfReviews;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", bookName='" + bookName + '\'' +
                 ", authorName='" + authorName + '\'' +
-                ", genre=" + genre + '\'' +
+                ", bookName='" + bookName + '\'' +
+                ", genre='" + genre + '\'' +
                 ", rating=" + rating + '\'' +
                 ", price=" + price +
                 '}';
     }
+
+
 }
