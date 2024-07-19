@@ -48,3 +48,30 @@
     * Throws IllegalArgumentException if the rating is not and integer in range [1,5]
     * Throws IllegalStateException if book with bookId does not exist
     * Throws DoubleRatingException if the user already rated this book.
+### Wishlist Management:
+* Create Wishlist:
+  * Postman:
+    * Method: POST
+    * URL: http://localhost:8080/api/v1/wishlists
+    * Body: (form-data)
+    * Key: userID, value: 1 // value instance '1' used in demo video
+* Add book to Wishlist:
+  * Postman:
+    * Method: POST
+    * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books
+    * Body: (form-data)
+    * Key: bookId, value: 1 // value instance '1' used in demo video
+* Remove book from Wishlist:
+   * Postman
+    * Method: DELETE
+    * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books/{bookId}
+* List books in Wishlist:
+   * Postman:
+    * Method: GET
+    * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books
+    * Response data: JSON LIST of books in the user's wishlist
+
+
+
+
+
