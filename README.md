@@ -62,11 +62,11 @@
     * Body: (form-data)
     * Key: bookId, value: 1 // value instance '1' used in demo video
 * Remove book from Wishlist:
-   * Postman
+  * Postman
     * Method: DELETE
     * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books/{bookId}
 * List books in Wishlist:
-   * Postman:
+  * Postman:
     * Method: GET
     * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books
     * Response data: JSON LIST of books in the user's wishlist
