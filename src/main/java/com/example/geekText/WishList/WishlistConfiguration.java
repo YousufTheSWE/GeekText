@@ -1,7 +1,7 @@
 package com.example.geekText.WishList;
 
-import com.example.geekText.Profile.ProfileRepository;
-import com.example.geekText.Profile.Profiles;
+import com.example.geekText.profile.ProfileRepository;
+import com.example.geekText.profile.Profiles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

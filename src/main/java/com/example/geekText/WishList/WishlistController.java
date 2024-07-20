@@ -1,8 +1,8 @@
 package com.example.geekText.WishList;
 
 import com.example.geekText.BookLibrary.Book;
-import com.example.geekText.Profile.ProfileRepository;
-import com.example.geekText.Profile.Profiles;
+import com.example.geekText.profile.ProfileRepository;
+import com.example.geekText.profile.Profiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

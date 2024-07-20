@@ -10,20 +10,22 @@ import java.util.List;
 @Configuration
 public class ProfileConfig {
 
-//    @Bean
-//    CommandLineRunner commandLineRunner(ProfileRepository repository){
-//        return args -> {
-//            Profile jimmy = new Profile(
-//                    "Jimmy",
-//                    "jimmy.john@gmail.com"
-//            );
-//            Profile michael = new Profile(
-//                    "Michael",
-//                    "michael.man@gmail.com"
-//            );
-//        repository.saveAll(
-//                List.of(jimmy,michael)
-//        );
-//        };
-//    }
+    @Bean
+    CommandLineRunner commandLineRunner(ProfileRepository repository){
+        return args -> {
+            Profiles jimmy = new Profiles(
+                    "Jimmy",
+                    "jimmy.john@gmail.com, ",
+                            "password1"
+            );
+            Profiles michael = new Profiles(
+                    "Michael",
+                    "michael.man@gmail.com",
+                    "password2"
+            );
+        repository.saveAll(
+                List.of(jimmy,michael)
+        );
+        };
+    }
 }

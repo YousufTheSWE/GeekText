@@ -1,7 +1,7 @@
 package com.example.geekText.WishList;
 
 import com.example.geekText.BookLibrary.Book;
-import com.example.geekText.Profile.Profiles;
+import com.example.geekText.profile.Profiles;
 import jakarta.persistence.*;
 
 import java.util.List;
