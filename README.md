@@ -70,7 +70,16 @@
     * Method: GET
     * URL: http://localhost:8080/api/v1/wishlists/{wishlistId}/books
     * Response data: JSON LIST of books in the user's wishlist
-
+### Shopping Cart:
+* Retrieve subtotal price of books in cart:
+  * Postman: GET http://localhost:8080/{userId}/cart/subtotal
+* Add book to cart:
+  * Postman: POST http://localhost:8080/cart/addBook
+  * Keys: bookId, userId
+* List books in cart:
+  * Postman: GET http://localhost:8080/{userId}/cart/books
+* Remove a book from cart:
+  * Postman: DELETE http://localhost:8080//{userId}/cart/removeBook/{bookId}
 
 
 
