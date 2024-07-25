@@ -26,6 +26,9 @@ public class Book {
     @Column(name = "genre") // Use the exact column name as in the database
     private String genre;
 
+    @Column(name = "price")
+    private double price;
+
     @Column(name = "rating") // Use the exact column name as in the database
     private Double rating;
 
@@ -35,19 +38,21 @@ public class Book {
     // Constructors, getters, setters, and toString()
     public Book() {}
 
-    public Book(String bookName, String authorName, String genre) {
+    public Book(String bookName, String authorName, String genre, Double price) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
+        this.price = price;
         this.rating = null;
         this.numberOfReviews = 0L;
     }
 
     public Book(String bookName, String authorName, String genre,
-                Double rating, Long numberOfReviews) {
+                Double price, Double rating, Long numberOfReviews) {
         this.authorName = authorName;
         this.bookName = bookName;
         this.genre = genre;
+        this.price = price;
         this.rating = rating;
         this.numberOfReviews = numberOfReviews;
     }
@@ -134,10 +139,13 @@ public class Book {
         numberOfReviews--;
     }
 
-
     public void setRating(Double rating) {
         this.rating = rating;
     }
+
+    public Double getPrice(){ return price; }
+
+    public void setPrice(){ this.price = price; }
 
     public void setNumberOfReviews(Long numberOfReviews) {
         this.numberOfReviews = numberOfReviews;
@@ -150,7 +158,8 @@ public class Book {
                 ", authorName='" + authorName + '\'' +
                 ", bookName='" + bookName + '\'' +
                 ", genre='" + genre + '\'' +
-                ", rating=" + rating +
+                ", rating=" + rating + '\'' +
+                ", price=" + price +
                 '}';
     }
 

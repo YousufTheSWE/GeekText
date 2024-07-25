@@ -1,48 +1,52 @@
 package com.example.geekText.WishList;
 
 import com.example.geekText.BookLibrary.Book;
+import com.example.geekText.profile.Profiles;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "Wishlist")
 public class Wishlist {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "Wishlist_sequence",
+            sequenceName = "Wishlist_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "Wishlist_sequence"
+    )
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "user_id")
-    private long userID;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Profiles user;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "wishlist_id")
+    @ManyToMany()
+    @JoinTable(
+            name = "wishlist_id",
+            joinColumns = @JoinColumn(name = "wishlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private List<Book> books;
 
 
 
+    public Wishlist() {}
 
 
-
-    public Wishlist() {
-    }
-
-    public Wishlist(Long id, String name, long userID, List<Book> books) {
-        this.id = id;
+    public Wishlist(String name, Profiles user){
         this.name = name;
-        this.userID = userID;
-        this.books = books;
-    }
-
-    public Wishlist(String name, long userID, List<Book> books) {
-        this.name = name;
-        this.userID = userID;
-        this.books = books;
+        this.user = user;
     }
 
     public Long getId() {
@@ -61,13 +65,11 @@ public class Wishlist {
         this.name = name;
     }
 
-    public long getUserID() {
-        return userID;
+    public Profiles getUser() {
+        return user;
     }
 
-    public void setUserID(long userID) {
-        this.userID = userID;
-    }
+    public void setUserID(Profiles user) {this.user = user;}
 
     public List<Book> getBooks() {
         return books;
@@ -82,7 +84,7 @@ public class Wishlist {
         return "Wishlist{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", userID=" + userID +
+                ", userID=" + user +
                 ", books='" + books + '\'' +
                 '}';
     }
