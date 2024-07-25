@@ -11,9 +11,10 @@ import java.util.List;
 
 @Service
 public class RatingService {
+
     class DoubleRatingException extends IllegalArgumentException {
         public DoubleRatingException(Long userId, Long bookId){
-            super("User " + userId + " can not make another comment on book " + bookId);
+            super("User " + userId + " can not make another rating on book " + bookId);
         }
     }
     private final RatingRepository ratingRepository;
@@ -43,5 +44,9 @@ public class RatingService {
         aBook.addRating(rating.getRating());
 
         ratingRepository.save(rating);
+    }
+
+    public void updateNewRating(Rating rating) {
+        // To be done
     }
 }
