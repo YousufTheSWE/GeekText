@@ -18,9 +18,9 @@ public class RatingController {
         ratingService.addNewRating(rating);
     }
 
-    @PutMapping
-    public void updateNewRating(@RequestBody Rating rating) {
-        ratingService.updateNewRating(rating);
-    }
+//    @PutMapping
+//    public void updateNewRating(@RequestBody Rating rating) {
+//        ratingService.updateNewRating(rating);
+//    }
 
 }
